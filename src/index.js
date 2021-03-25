@@ -3,36 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {createStore} from 'redux'
 import {Provider} from 'react-redux'
-
-// action = {type: '', payload: ''}
-
-const defaultState = {
-  cash: 0
-}
-
-const clientReducer = (state = defaultState, action) => {
-  switch(action.type) {
-    case 'ADD_CLIENT': return {...state, cash: state.cash + action.payload}
-    case 'GET_CLIENT': return {...state, cash: state.cash - action.payload}
-
-    default: return state
-  }
-
-}
-
-const cashReducer = (state = defaultState, action) => {
-  switch(action.type) {
-    case 'ADD_CASH': return {...state, cash: state.cash + action.payload}
-    case 'GET_CASH': return {...state, cash: state.cash - action.payload}
-
-    default: return state
-  }
-
-}
-
-const store = createStore(cashReducer)
+import {store} from './store'
 
 ReactDOM.render(
   <Provider store={store}>
