@@ -1,6 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux'
+import {addClientAction, removeClientAction} from './store/clientReducer'
+import {addCashAction, removeCashAction} from './store/cashReducer'
 
 function App() {
   const dispatch = useDispatch()
@@ -8,20 +9,20 @@ function App() {
   const clients = useSelector(state => state.clients.clients)
   
   const addCash = () => {
-      dispatch({type: 'ADD_CASH', payload: 1})
+      dispatch(addCashAction(1))
   }
   const getCash = () => {
-    dispatch({type: 'GET_CASH', payload: 1})
+    dispatch(removeCashAction(1))
   }
   const addClient = (name) => {
       const client = {
         name, 
         id: Date.now()
       }
-      dispatch({type: 'ADD_CLIENT', payload: client})
+      dispatch(addClientAction(client))
   }
   const removeClient = (client) => {
-    dispatch({type: 'REMOVE_CLIENT', payload: client.id})
+    dispatch(removeClientAction(client.id))
   }
 
 
